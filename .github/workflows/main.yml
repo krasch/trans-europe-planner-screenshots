@@ -17,6 +17,12 @@ jobs:
         url: https://github.com
         fullPage: 'false'
         noCommitHashFileName: 'true'
+
+    - name: Set current datetime as env variable
+      run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+
+    - name: Rename file to include current datetime
+      run: cp screenshots/desktopPage1920x1080.jpeg screenshots/desktopPage1920x1080_$NOW.jpeg
         
     - uses: actions/upload-artifact@v2 # Uplaod screenshots to Actions Artifacts via actions/upload-artifact@v2
       with:
