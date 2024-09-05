@@ -5,6 +5,10 @@ jobs:
   screenshots:
     runs-on: ubuntu-latest
     steps:
+
+    - uses: actions/checkout@v3   
+      with:
+        ref: screenshots  # branch name
     
     - name: install puppeteer-headful
       uses: mujo-code/puppeteer-headful@master # Required for headful puppeteer
@@ -23,10 +27,6 @@ jobs:
 
     - name: Rename file to include current datetime
       run: cp screenshots/desktopPage1920x1080.jpeg screenshots/${{ env.NOW }}_desktop1920x1080.jpeg
-        
-    - uses: actions/checkout@v3   
-      with:
-        ref: screenshots  # branch name
 
     - name: Add and commit newest screenshot
       run: |
