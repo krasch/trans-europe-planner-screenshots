@@ -1,8 +1,9 @@
 name: Screenshot website
-on: push
-  #schedule:
-  #- cron: "0 7-18 * * 1-5"
-    
+on:
+  schedule:
+    - cron: '0 6 * * *'
+
+  workflow_dispatch:
 
 permissions:
   contents: write
