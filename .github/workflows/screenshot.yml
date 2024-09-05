@@ -1,0 +1,44 @@
+name: Screenshot website
+on:
+  schedule:
+    - cron: '0 6 * * *'
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v3   
+      with:
+        ref: screenshots  # branch name
+    
+    - name: install puppeteer-headful
+      uses: mujo-code/puppeteer-headful@master # Required for headful puppeteer
+      env:
+        CI: 'true'
+        
+    - name: screenshots-ci-action
+      uses: flameddd/screenshots-ci-action@v2.1.0
+      with:
+        url: https://krasch.io/trans-europe-planner/
+        fullPage: 'false'
+        noCommitHashFileName: 'true'
+
+    - name: Set current datetime as env variable
+      run: echo "NOW=$(date +'%Y-%m-%dT%H%M%S')" >> $GITHUB_ENV
+
+    - name: Rename file to include current datetime
+      run: cp screenshots/desktopPage1920x1080.jpeg screenshots/${{ env.NOW }}_desktop1920x1080.jpeg
+
+    - name: Add and commit newest screenshot
+      run: |
+            git config --global user.name "CI"
+            git config --global user.email "krasch@users.noreply.github.com"
+            git add screenshots/${{ env.NOW }}_desktop1920x1080.jpeg
+            git commit -a -m "Screenshot from ${{ env.NOW }}"
+            git push
