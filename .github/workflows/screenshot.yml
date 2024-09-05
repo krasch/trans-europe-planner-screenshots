@@ -1,5 +1,13 @@
 name: Screenshot website
-on: push
+on:
+  #schedule:
+  #- cron: "0 7-18 * * 1-5"
+    
+  # manually
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   screenshots:
