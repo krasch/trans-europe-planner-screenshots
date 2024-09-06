@@ -1,9 +1,9 @@
 name: Screenshot website
 on:
-  schedule:
-    - cron: '0 6 * * *'
-
   workflow_dispatch:
+  schedule:
+     - cron: '0 4 * * *'
+
 
 permissions:
   contents: write
