@@ -14,8 +14,6 @@ jobs:
     steps:
 
     - uses: actions/checkout@v3   
-      with:
-        ref: screenshots  # branch name
     
     - name: install puppeteer-headful
       uses: mujo-code/puppeteer-headful@master # Required for headful puppeteer
