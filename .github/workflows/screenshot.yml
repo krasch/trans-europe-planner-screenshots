@@ -26,7 +26,7 @@ jobs:
         url: https://krasch.io/trans-europe-planner/
         fullPage: 'false'
         noCommitHashFileName: 'true'
-        waitUntil: networkidle0
+        waitForSelector: '#readyForScreenshot'
 
     - name: Set current datetime as env variable
       run: echo "NOW=$(date +'%Y-%m-%dT%H%M%S')" >> $GITHUB_ENV
