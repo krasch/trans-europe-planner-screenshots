@@ -27,7 +27,7 @@ jobs:
         fullPage: 'false'
         noCommitHashFileName: 'true'
         waitForSelector: '#readyForScreenshot'
-        waitForSelectorTimeout: 30000 s
+        waitForSelectorTimeout: 60000
 
     - name: Set current datetime as env variable
       run: echo "NOW=$(date +'%Y-%m-%dT%H%M%S')" >> $GITHUB_ENV
