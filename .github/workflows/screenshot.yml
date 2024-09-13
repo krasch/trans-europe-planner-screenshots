@@ -36,7 +36,7 @@ jobs:
       run: cp screenshots/desktopPage1920x1080.jpeg screenshots/${{ env.NOW }}_desktop1920x1080.jpeg
 
     - name: Create progress gif
-      run: convert -delay 50 -resize 20% -loop 0 *_desktop1920x1080.jpeg progress.gif
+      run: convert -delay 50 -resize 20% -loop 0 screenshots/*_desktop1920x1080.jpeg screenshots/progress.gif
 
     - name: Add and commit newest screenshot and gif
       run: |
