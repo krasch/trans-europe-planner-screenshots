@@ -35,10 +35,14 @@ jobs:
     - name: Rename file to include current datetime
       run: cp screenshots/desktopPage1920x1080.jpeg screenshots/${{ env.NOW }}_desktop1920x1080.jpeg
 
-    - name: Add and commit newest screenshot
+    - name: Create progress gif
+      run: convert -delay 50 -resize 20% -loop 0 *_desktop1920x1080.jpeg progress.gif
+
+    - name: Add and commit newest screenshot and gif
       run: |
             git config --global user.name "CI"
             git config --global user.email "krasch@users.noreply.github.com"
             git add screenshots/${{ env.NOW }}_desktop1920x1080.jpeg
+            git add screenshots/progress.gif
             git commit -a -m "Screenshot from ${{ env.NOW }}"
             git push
