@@ -23,7 +23,7 @@ jobs:
     - name: screenshots-ci-action
       uses: flameddd/screenshots-ci-action@v2.1.0
       with:
-        url: https://krasch.io/trans-europe-planner/
+        url: https://krasch.io/trans-europe-planner?start=Berlin
         fullPage: 'false'
         noCommitHashFileName: 'true'
         waitForSelector: '#readyForScreenshot'
